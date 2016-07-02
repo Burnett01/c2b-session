@@ -1,0 +1,29 @@
+{
+  "name": "c2b-session",
+  "version": "0.0.1",
+  "bugs": {
+    "url": "https://github.com/Cloud2Box/c2b-session/issues"
+  },
+  "description": "A minimalist session-manager for NodeJS",
+  "keywords": [
+    "session",
+    "javascript",
+    "coffescript",
+    "node",
+    "minimal",
+    "lightweight",
+    "pure"
+  ],
+  "author": {
+    "name": "Cloud2Box - IT Dienstleistungen",
+    "email": "info@cloud2box.net",
+    "url": "https://github.com/Cloud2Box/c2b-session"
+  },
+  "main": "./src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cloud2Box/c2b-session"
+  },
+  "dependencies": {
+  }
+}
