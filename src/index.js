@@ -94,7 +94,7 @@ C2B_SESSION = {
 
     retrive: function(ident, _callback){
         if(!ident || (ident && typeof ident !== 'string')){
-            return _callback(PARAM_NON_STRING, null);
+            return _callback(ERRORS.PARAM_NON_STRING, null);
         }
         if(!C2B_SESSION.exists(ident)){ 
             return _callback(ERRORS.SESSION_INVALID, null); 
