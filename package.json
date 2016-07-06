@@ -1,6 +1,6 @@
 {
   "name": "c2b-session",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "bugs": {
     "url": "https://github.com/Cloud2Box/c2b-session/issues"
   },
@@ -12,7 +12,10 @@
     "node",
     "minimal",
     "lightweight",
-    "pure"
+    "pure",
+    "timeout",
+    "storage",
+    "data"
   ],
   "author": {
     "name": "Cloud2Box - IT Dienstleistungen",
