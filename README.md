@@ -6,22 +6,27 @@ A minimalist session-manager for NodeJS
 ## API
 
 Methods (fn's) of the module-object:
-   * setTimeout(time <minutes>, callback <function>(ident, time)) Fn
-   * create(config <object>, callback <function>(err, session)) Fn
-   * retrive(ident <string>, callback <function>(err, session)) Fn
-   * exists(ident <string>) Boolean
-   * is_connected(ident <string>) Boolean
-   * getAll() Object
-   * getOnline() Array
-   * destroy() Void
+
+```
+* setTimeout(time <minutes>, callback <function>(ident, time)) Fn
+* create(config <object>, callback <function>(err, session)) Fn
+* retrive(ident <string>, callback <function>(err, session)) Fn
+* exists(ident <string>) Boolean
+* is_connected(ident <string>) Boolean
+* getAll() Object
+* getOnline() Array
+* destroy() Void
+```
 
 Methods (fn's) of a session-object:
 
-   * connect(callback <function>(err)) Fn
-   * disconnect(callback <function>(err)) Fn
-   * online() Boolean
-   * put(callback <function>(err)) Fn
-   * get([key <string> (optional)], callback <function>(err, result)) Fn
+```
+* connect(callback <function>(err)) Fn
+* disconnect(callback <function>(err)) Fn
+* online() Boolean
+* put(callback <function>(err)) Fn
+* get([key <string> (optional)], callback <function>(err, result)) Fn
+```
 
 Default template of session-object:
 ```javascript
