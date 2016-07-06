@@ -3,12 +3,53 @@ A minimalist session-manager for NodeJS
 
 ---
 
-### Setup
+## API
+
+Methods (fn's) of the module-object:
+    * setTimeout(time <minutes>, callback <function>(ident, time)) Fn
+    * create(config <object>, callback <function>(err, session)) Fn
+    * retrive(ident <string>, callback <function>(err, session)) Fn
+    * exists(ident <string>) Boolean
+    * is_connected(ident <string>) Boolean
+    * getAll() Object
+    * getOnline() Array
+    * destroy() Void
+
+Methods (fn's) of a session-object:
+
+    * connect(callback <function>(err)) Fn
+    * disconnect(callback <function>(err)) Fn
+    * online() Boolean
+    * put(callback <function>(err)) Fn
+    * get([key <string> (optional)], callback <function>(err, result)) Fn
+
+Default template of session-object:
+```javascript
+{
+    t_connect: Date.now(),      //timestamp of a sessions initial connection
+    t_last_action: Date.now(),  //timestamp of a sessions last action, eg. put() [required]
+    connected: false,           //state of a sessions connection [required]
+    data: {},                   //storage of session data [required]
+}
+```
+
+---
+
+## Setup
 ```javascript
 var sessionManager = require('c2b-session');
+```
 
-//Optionally set a timeout (min) for sessions
+### Set a timeout for sessions (optional)
+
+```javascript
+//Optionally set a timeout (min) for sessions...
 sessionManager.setTimeout(1);
+
+//and you can pass a function too
+sessionManager.setTimeout(1, function(ident, time){
+    console.log(`[SESSION] ID ${ident} timed-out (${time})`);
+});
 ```
 
 ### Create a session
@@ -46,7 +87,7 @@ sessionManager.create({
 sessionManager.retrive("my-session-name", function(err, session){
     if(err){ return console.log(err); };
 
-    console.log("[SESSION] Successfully retriven!");
+    console.log("[SESSION] Successfully retrived!");
     console.log(session);
 });
 ```
@@ -62,7 +103,7 @@ if(sessionManager.exists("my-session-name")){
 
 ### Test whether session is connected
 ```javascript
-if(!sessionManager.is_connected("my-session-name")){
+if(sessionManager.is_connected("my-session-name")){
     console.log("[SESSION] Online!");
 }else{
     console.log("[SESSION] Offline!");
@@ -87,12 +128,9 @@ sessionManager.getOnline();
 sessionManager.destroy("my-session-name");
 ```
 ---
-Methods of a session-object:
- - connect
- - disconnect
- - online
- - put
- - get
+
+## Session Handling
+A session-object is returned by the modules ```create``` and ```retrive``` methods.
 
 ### Connect a session
 ```javascript
@@ -178,7 +216,7 @@ if(!sessionHandler.exists("my-session-name")){
 
     sessionHandler.retrive("my-session-name", function(err, session){
         if(err){ return console.log(err); };
-        console.log("[SESSION] Successfully retriven!");
+        console.log("[SESSION] Successfully retrived!");
         console.log(session);
 
         //You may now connect via session.connect(...)
@@ -197,7 +235,7 @@ sessionHandler.createOrRetrive({
     if(err){ return console.log(err); };
 
     if(state == 1){ console.log("Successfully created!"); }
-    if(state == 2){ console.log("Successfully retriven!"); }
+    if(state == 2){ console.log("Successfully retrived!"); }
 
     if(!session.online()){
         session.connect(function(err){
@@ -209,5 +247,6 @@ sessionHandler.createOrRetrive({
 });
 ```
 ---
+
 ##How to install:
 Just use `npm install c2b-session` 
