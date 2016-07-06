@@ -51,7 +51,7 @@ var sessionManager = require('c2b-session');
 //Optionally set a timeout (min) for sessions...
 sessionManager.setTimeout(1);
 
-//and you can pass a function too
+//as of version 0.0.3 you can pass a function too
 sessionManager.setTimeout(1, function(ident, time){
     console.log(`[SESSION] ID ${ident} timed-out (${time})`);
 });
