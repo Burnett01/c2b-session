@@ -50,10 +50,16 @@ var SESSION_TPL = function() {
 C2B_SESSION = {
 
     _timeout: 3,
+    _timeout_cb: undefined,
 
-    setTimeout: function(timeout){
+    setTimeout: function(timeout, callback){
         if(!timeout){ return; }
+        
         C2B_SESSION._timeout = timeout;
+
+        if(callback && typeof callback === 'function'){
+            C2B_SESSION._timeout_cb = callback;
+        }
     },
 
     sessions: {},
@@ -221,6 +227,9 @@ C2B_SESSION = {
             return;
         }
         delete C2B_SESSION.sessions[ident];
+        if(C2B_SESSION._timeout_cb && typeof C2B_SESSION._timeout_cb === 'function'){
+            C2B_SESSION._timeout_cb(ident, Date.now());
+        }
     },
 
 };
