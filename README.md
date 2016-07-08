@@ -5,6 +5,36 @@ Unit-Tests are included.
 
 ---
 
+# Table of contents
+* [API](#api)
+* [Setup](#setup)
+ * [Set a timeout for sessions](#set-a-timeout-for-sessions-optional) (optional)
+ * [Create a session](#create-a-session)
+ * [Retrive a session](#retrieve-a-session)
+ * [Create or retrive a session](#create-or-retrive-a-session)
+ * [Test whether session exist](#test-whether-session-exist)
+ * [Test whether session is connected](#test-whether-session-is-connected)
+ * [Get all sessions](#get-all-sessions)
+ * [Get online sessions](#get-online-sessions)
+ * [Destroy a session](#destroy-a-session)
+* [Session Handling](#session-handling)
+ * [Connect a session](#connect-a-session)
+ * [Disconnect a session](#disconnect-a-session)
+ * [Test status](#test-status)
+ * [Store session-data](#store-session-data)
+ * [Query session-data](#query-session-data)
+* Examples
+ * [Example 1](#example-1)
+ * [Example 2](#example-2-recommended) (recommended)
+* [Unit-Test](#unit-test)
+ * [Test-case: Basic](../master/test/test.basic.js)
+ * [Test-case: Extended](../master/test/test.extended.js)
+ * [Make](#make)
+ * [NPM](#npm)
+* [How to install](#how-to-install)
+
+---
+
 ## API
 
 Methods (fn) of the module:
@@ -13,6 +43,7 @@ Methods (fn) of the module:
 * setTimeout(time <minutes>, callback <function>(ident, time)) Fn
 * create(config <object>, callback <function>(err, session)) Fn
 * retrive(ident <string>, callback <function>(err, session)) Fn
+* createOrRetrive(config <object>, callback <function>(err, session, state)) Fn
 * exists(ident <string>) Boolean
 * is_connected(ident <string>) Boolean
 * getAll() Object
@@ -100,6 +131,21 @@ sessionManager.retrive("my-session-name", function(err, session){
 });
 ```
 
+### Create or retrive a session
+```javascript
+sessionHandler.createOrRetrive({
+    ident: "my-session-name"
+
+}, function(err, session, state){
+    if(err){ return console.log(err); };
+
+    if(state == 1){ console.log("Successfully created!"); }
+    if(state == 2){ console.log("Successfully retrived!"); }
+    
+    console.log(session);
+});
+```
+
 ### Test whether session exist
 ```javascript
 if(sessionManager.exists("my-session-name")){
@@ -149,7 +195,7 @@ session.connect(function(err){
 });
 ```
 
-### Disonnect a session
+### Disconnect a session
 ```javascript
 session.disconnect(function(err){
     if(err){ return console.log(err); };
