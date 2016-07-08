@@ -1,11 +1,13 @@
 # c2b-session
-A minimalist session-manager for NodeJS
+A minimalist session-manager for NodeJS.
+
+Unit-Tests are included.
 
 ---
 
 ## API
 
-Methods (fn's) of the module-object:
+Methods (fn) of the module:
 
 ```
 * setTimeout(time <minutes>, callback <function>(ident, time)) Fn
@@ -18,7 +20,7 @@ Methods (fn's) of the module-object:
 * destroy() Void
 ```
 
-Methods (fn's) of a session-object:
+Methods (fn) of a session-object:
 
 ```
 * connect(callback <function>(err)) Fn
@@ -34,7 +36,8 @@ Default template of session-object:
     t_connect: Date.now(),      //timestamp of a sessions initial connection
     t_last_action: Date.now(),  //timestamp of a sessions last action, eg. put() [required]
     connected: false,           //state of a sessions connection [required]
-    data: {},                   //storage of session data [required]
+    ident: '',                  //ident of a session [required]
+    data: {}                    //storage of session data [required]
 }
 ```
 
@@ -253,5 +256,24 @@ sessionHandler.createOrRetrive({
 ```
 ---
 
+## Unit-Test
+Two test-cases are available:
+* test/test.basic.js
+* test/test.extended.js
+
+Simply run those tests as you please:
+
+### Make
+```make test```
+
+```make test-ext```
+
+### NPM
+```npm test```
+
+```npm test-ext```
+
+---
+
 ##How to install:
-Just use `npm install c2b-session` 
+Use `npm install c2b-session` 
