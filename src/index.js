@@ -42,6 +42,7 @@ var SESSION_TPL = function() {
         t_connect: Date.now(),
         t_last_action: Date.now(),
         connected: false,
+        ident: '',
         data: {},
     };
 };
@@ -111,7 +112,7 @@ C2B_SESSION = {
             return _callback(ERRORS.SESSION_EXPIRED, null);
         }
 
-        return _callback(null, {
+        return _callback(null, Object.assign({
 
             connect: function(callback){
                 if(!C2B_SESSION.exists(ident)){ 
@@ -182,7 +183,8 @@ C2B_SESSION = {
                 }
                 return (C2B_SESSION.is_connected(ident)) ? true : false; 
             }
-        });
+
+        }, C2B_SESSION.sessions[ident]));
     },
 
     create: function(config, callback) {
