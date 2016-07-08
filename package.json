@@ -1,6 +1,6 @@
 {
   "name": "c2b-session",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "bugs": {
     "url": "https://github.com/Cloud2Box/c2b-session/issues"
   },
@@ -8,14 +8,14 @@
   "keywords": [
     "session",
     "javascript",
-    "coffescript",
     "node",
     "minimal",
     "lightweight",
     "pure",
     "timeout",
     "storage",
-    "data"
+    "data",
+    "unit-tests"
   ],
   "author": {
     "name": "Cloud2Box - IT Dienstleistungen",
@@ -23,10 +23,25 @@
     "url": "https://github.com/Cloud2Box/c2b-session"
   },
   "main": "./src/index.js",
+  "scripts": {
+    "test": "make test",
+    "test-ext": "make test-ext"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Cloud2Box/c2b-session"
+    "url": "git+https://github.com/Cloud2Box/c2b-session.git"
   },
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "Burnett01",
+      "email": "s-8@posteo.mx"
+    }
+  ],
   "dependencies": {
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
   }
 }
