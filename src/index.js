@@ -66,29 +66,40 @@ C2B_SESSION = {
     sessions: {},
 
     exists: function(ident){
+        if(!ident || (ident && typeof ident !== 'string')){
+            return callback(ERRORS.PARAM_NON_STRING);
+        }
         return (C2B_SESSION.sessions.hasOwnProperty(ident)) ? true: false;
     },
 
     is_connected: function(ident){
-        return (_object_has_property(C2B_SESSION.sessions[ident], 'connected') 
-        && C2B_SESSION.sessions[ident].connected === true) ? true : false;
+        if(!ident || (ident && typeof ident !== 'string')){
+            return callback(ERRORS.PARAM_NON_STRING);
+        }
+        if(!C2B_SESSION.exists(ident)){
+            return callback(ERRORS.SESSION_INVALID);
+        }
+        if(!C2B_SESSION.sessions[ident].hasOwnProperty('connected')){
+            return callback(ERRORS.PARAM_NON_OBJECT);
+        }
+        return (C2B_SESSION.sessions[ident].connected === true) ? true : false;
     },
 
     getAll: function(){
         return C2B_SESSION.sessions;
     },
 
-    getOnline: function(filter){
+    getOnline: function(){
         var sessions = C2B_SESSION.getAll();
         var online_sessions = [];
 
-        if(_object_valid_length(sessions)){
+        if(typeof sessions === 'object' && Object.keys(sessions).length > 0){
             for (var ident in sessions) {
-                if (!_object_has_property(sessions, ident)) continue;
-                if (_object_has_property(sessions[ident], 't_last_action')
-                && _timedout(sessions[ident].t_last_action, C2B_SESSION._timeout)){
-                     C2B_SESSION.destroy(ident);
-                     continue;
+                if(!sessions.hasOwnProperty(ident)) continue;
+                if(sessions[ident].hasOwnProperty('t_last_action')
+                && _has_timeout(sessions[ident].t_last_action, C2B_SESSION._timeout)){
+                    C2B_SESSION.destroy(ident);
+                    continue;
                 }
                 if (C2B_SESSION.is_connected(ident)){
                     online_sessions.push(sessions[ident]);
@@ -106,8 +117,8 @@ C2B_SESSION = {
         if(!C2B_SESSION.exists(ident)){ 
             return _callback(ERRORS.SESSION_INVALID, null); 
         }
-        if(_object_has_property(C2B_SESSION.sessions[ident], 't_last_action') 
-        && _timedout(C2B_SESSION.sessions[ident].t_last_action, C2B_SESSION._timeout)){
+        if(C2B_SESSION.sessions[ident].hasOwnProperty('t_last_action')
+        && _has_timeout(C2B_SESSION.sessions[ident].t_last_action, C2B_SESSION._timeout)){
             C2B_SESSION.destroy(ident);
             return _callback(ERRORS.SESSION_EXPIRED, null);
         }
@@ -240,18 +251,6 @@ module.exports = C2B_SESSION;
 
 
 
-function _object_valid(obj){
-    return (obj && typeof obj === "object") ? true : false;
-}
-
-function _object_valid_length(obj){
-    return (_object_valid(obj) && Object.keys(obj).length > 0) ? true : false;
-}
-
-function _object_has_property(obj, prop){
-    return (_object_valid(obj) && obj.hasOwnProperty(prop)) ? true : false;
-}
-
-function _timedout(time, minutes){
+function _has_timeout(time, minutes){
     return ((Math.round(((new Date() - time) / 1000) / 60) % 60) >= minutes) ? true : false;
 }
