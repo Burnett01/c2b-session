@@ -3,6 +3,8 @@ A minimalist session-manager for NodeJS.
 
 Unit-Tests are included.
 
+[![Build Status](https://travis-ci.org/Cloud2Box/c2b-session.svg?branch=master)](https://travis-ci.org/Cloud2Box/c2b-session)
+
 ---
 
 # Table of contents
