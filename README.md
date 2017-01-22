@@ -32,7 +32,7 @@ Unit-Tests are included.
  * [Make](#make)
  * [NPM](#npm)
 * [How to install](#how-to-install)
-* Use-case
+* [Use-case](#use-case)
 ---
 
 ## API
