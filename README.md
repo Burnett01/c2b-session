@@ -28,9 +28,7 @@ Unit-Tests are included.
 * Examples
  * [Example 1](#example-1)
  * [Example 2](#example-2-recommended) (recommended)
-* [Unit-Test](#unit-test)
- * [Test-case: Basic](../master/test/test.basic.js)
- * [Test-case: Extended](../master/test/test.extended.js)
+* [Unit-Tests](#unit-tests)
  * [Make](#make)
  * [NPM](#npm)
 * [How to install](#how-to-install)
@@ -304,22 +302,18 @@ sessionHandler.createOrRetrive({
 ```
 ---
 
-## Unit-Test
-Two test-cases are available:
-* test/test.basic.js
-* test/test.extended.js
+## Unit-Tests
+The testing-framework used in this module is [Mocha](https://github.com/mochajs/mocha) with the BDD / TDD assertion library [Chai](https://github.com/chaijs/chai).
+
+* test/test.default.js `Performs 13 tests` | [Source](../master/test/test.default.js)
 
 Simply run those tests as you please:
 
 ### Make
 ```make test```
 
-```make test-ext```
-
 ### NPM
 ```npm test```
-
-```npm test-ext```
 
 ---
 

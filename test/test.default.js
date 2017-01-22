@@ -3,7 +3,75 @@ var sessionManager = require('../src/index');
 
 var session_name = 'session-xyz';
 
-describe('Session Manager [EXTENDED]', function() {
+describe('Session Manager [BASIC-TESTS]', function() {
+
+    it('sets a timeout #setTimeout', function(done) {
+
+        expect(sessionManager).to.have.property('setTimeout');
+        expect(sessionManager.setTimeout).to.be.a('function');
+
+        sessionManager.setTimeout(1);
+
+        done();
+    });
+
+    it('creates a session', function(done) {
+
+        expect(sessionManager).to.have.property('create');
+        expect(sessionManager.create).to.be.a('function');
+
+        sessionManager.create({
+            ident: session_name
+
+        }, function(err, session){
+            expect(err).to.be.null;
+            if(err){ return console.log(err); };
+
+            expect(session).not.to.be.null;
+            expect(session).to.be.a('object');
+
+            expect(session).to.have.property('ident');
+            expect(session.ident).to.equal(session_name);
+
+            done();
+        });
+    });
+    
+
+    it('retrives the session by ident', function(done) {
+
+        expect(sessionManager).to.have.property('retrive');
+        expect(sessionManager.retrive).to.be.a('function');
+
+        sessionManager.retrive(session_name, function(err, session){
+            expect(err).to.be.null;
+            if(err){ return console.log(err); };
+
+            expect(session).not.to.be.null;
+            expect(session).to.be.a('object');
+
+            expect(session).to.have.property('ident');
+            expect(session.ident).to.equal(session_name);
+            
+            done();
+        });
+    });
+
+
+    it('destroys the session', function(done) {
+
+        expect(sessionManager).to.have.property('destroy');
+        expect(sessionManager.destroy).to.be.a('function');
+
+        sessionManager.destroy(session_name);
+
+        done();
+    });
+});
+
+// Extended tests
+
+describe('Session Manager [EXTENDED-TESTS]', function() {
 
     it('sets a timeout #setTimeout', function(done) {
 
@@ -39,16 +107,6 @@ describe('Session Manager [EXTENDED]', function() {
             expect(session).to.have.property('ident');
             expect(session.ident).to.equal(session_name);
 
-            if(state == 1){ 
-                console.log("[SESSION] Successfully created!");
-                console.log(session.ident);
-            }
-
-            if(state == 2){ 
-                console.log("[SESSION] Successfully retrived!");
-                console.log(session.ident);
-            }
-
             done();
         });
     });
@@ -74,16 +132,6 @@ describe('Session Manager [EXTENDED]', function() {
             expect(session).to.have.property('ident');
             expect(session.ident).to.equal(session_name);
 
-            if(state == 1){ 
-                console.log("[SESSION] Successfully created!");
-                console.log(session.ident);
-            }
-
-            if(state == 2){ 
-                console.log("[SESSION] Successfully retrived!");
-                console.log(session.ident);
-            }
-
             _session = session;
 
             done();
@@ -101,8 +149,6 @@ describe('Session Manager [EXTENDED]', function() {
         _session.connect(function(err){
             expect(err).to.be.null;
             if(err){ return console.log(err); };
-
-            console.log("Successfully connected!");
 
             done();
         });
@@ -122,8 +168,6 @@ describe('Session Manager [EXTENDED]', function() {
             expect(err).to.be.null;
             if(err){ return console.log(err); };
 
-            console.log("[SESSION] Successfully stored the data!");
-
             done();
         });
     });
@@ -140,10 +184,6 @@ describe('Session Manager [EXTENDED]', function() {
             expect(result).not.to.be.null;
             expect(result).to.be.a('string');
             expect(result).to.equal('test data 1');
-
-            console.log("[SESSION] Successfully fetched the data!");
-            console.log(result);
-
         });
 
         _session.get('test2', function(err, result){
@@ -153,9 +193,6 @@ describe('Session Manager [EXTENDED]', function() {
             expect(result).not.to.be.null;
             expect(result).to.be.a('string');
             expect(result).to.equal('test data 2');
-
-            console.log("[SESSION] Successfully fetched the data!");
-            console.log(result);
 
             done();
         });
@@ -179,10 +216,6 @@ describe('Session Manager [EXTENDED]', function() {
             expect(results).to.have.property('test2');
             expect(results.test2).to.equal('test data 2');
 
-
-            console.log("[SESSION] Successfully fetched the data!");
-            console.log(results);
-
             done();
         });
     });
@@ -198,8 +231,6 @@ describe('Session Manager [EXTENDED]', function() {
         _session.disconnect(function(err){
             expect(err).to.be.null;
             if(err){ return console.log(err); };
-
-            console.log("Successfully disconnected!");
 
             done();
         });
