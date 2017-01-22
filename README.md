@@ -1,5 +1,6 @@
 # c2b-session
-A minimalist session-manager for NodeJS.
+A legacy yet minimalist session-manager for Node.js.
+Supports Node.js/IO.js from version 0.10 onwards.
 
 Unit-Tests are included.
 

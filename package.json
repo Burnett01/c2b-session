@@ -1,10 +1,10 @@
 {
   "name": "c2b-session",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "bugs": {
     "url": "https://github.com/Cloud2Box/c2b-session/issues"
   },
-  "description": "A minimalist session-manager for NodeJS",
+  "description": "A legacy yet minimalist session-manager for Node.js/IO.js. Supports Node.js/IO.js from version 0.10 onwards.",
   "keywords": [
     "session",
     "javascript",
@@ -15,7 +15,8 @@
     "timeout",
     "storage",
     "data",
-    "unit-tests"
+    "unit-tests",
+    "legacy"
   ],
   "author": {
     "name": "Cloud2Box - IT Dienstleistungen",
