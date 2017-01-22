@@ -33,6 +33,7 @@ Unit-Tests are included.
  * [NPM](#npm)
 * [How to install](#how-to-install)
 * [Use-case](#use-case)
+
 ---
 
 ## API
