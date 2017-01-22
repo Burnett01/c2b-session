@@ -1,6 +1,6 @@
 {
   "name": "c2b-session",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "bugs": {
     "url": "https://github.com/Cloud2Box/c2b-session/issues"
   },
@@ -24,8 +24,7 @@
   },
   "main": "./src/index.js",
   "scripts": {
-    "test": "make test",
-    "test-ext": "make test-ext"
+    "test": "mocha --reporter spec ./test/test.default.js"
   },
   "repository": {
     "type": "git",
