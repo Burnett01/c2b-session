@@ -1,6 +1,6 @@
 {
   "name": "c2b-session",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "bugs": {
     "url": "https://github.com/Cloud2Box/c2b-session/issues"
   },
@@ -39,9 +39,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "chai": "^3.5.0",
-    "coveralls": "^2.11.12",
-    "mocha": "^2.5.3",
-    "mocha-lcov-reporter": "^1.2.0"
+    "chai": "*",
+    "mocha": "*"
   }
 }
