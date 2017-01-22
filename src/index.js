@@ -23,7 +23,7 @@
 *
 */
 
-const ERRORS = {
+var ERRORS = {
     SESSION_INVALID:            new Error('The session does not exist!')
   , SESSION_EXISTS:             new Error('The session already exist!')
   , SESSION_CONNECTED:          new Error('The session is already connected!')
@@ -253,4 +253,26 @@ module.exports = C2B_SESSION;
 
 function _has_timeout(time, minutes){
     return ((Math.round(((new Date() - time) / 1000) / 60) % 60) >= minutes) ? true : false;
+}
+
+if (typeof Object.assign != 'function') {
+  Object.assign = function(target) {
+    'use strict';
+    if (target == null) {
+      throw new TypeError('Cannot convert undefined or null to object');
+    }
+
+    target = Object(target);
+    for (var index = 1; index < arguments.length; index++) {
+      var source = arguments[index];
+      if (source != null) {
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+    }
+    return target;
+  };
 }
