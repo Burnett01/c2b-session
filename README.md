@@ -318,10 +318,10 @@ Simply run those tests as you please:
 
 ---
 
-##How to install:
+## How to install:
 Use `npm install c2b-session` 
 
 ---
 
-##Use-case:
+## Use-case:
 This module is used for a Twitch-like channel application.
