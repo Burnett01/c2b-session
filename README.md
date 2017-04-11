@@ -12,8 +12,8 @@ Unit-Tests are included.
 * [Setup](#setup)
  * [Set a timeout for sessions](#set-a-timeout-for-sessions-optional) (optional)
  * [Create a session](#create-a-session)
- * [Retrive a session](#retrieve-a-session)
- * [Create or retrive a session](#create-or-retrive-a-session)
+ * [Retrieve a session](#retrieve-a-session)
+ * [Create or retrieve a session](#create-or-retrieve-a-session)
  * [Test whether session exist](#test-whether-session-exist)
  * [Test whether session is connected](#test-whether-session-is-connected)
  * [Get all sessions](#get-all-sessions)
@@ -42,8 +42,8 @@ Methods (fn) of the module:
 ```
 * setTimeout(time <minutes>, callback <function>(ident, time)) Fn
 * create(config <object>, callback <function>(err, session)) Fn
-* retrive(ident <string>, callback <function>(err, session)) Fn
-* createOrRetrive(config <object>, callback <function>(err, session, state)) Fn
+* retrieve(ident <string>, callback <function>(err, session)) Fn
+* createOrRetrieve(config <object>, callback <function>(err, session, state)) Fn
 * exists(ident <string>) Boolean
 * is_connected(ident <string>) Boolean
 * getAll() Object
@@ -123,24 +123,24 @@ sessionManager.create({
 
 ### Retrieve a session
 ```javascript
-sessionManager.retrive("my-session-name", function(err, session){
+sessionManager.retrieve("my-session-name", function(err, session){
     if(err){ return console.log(err); };
 
-    console.log("[SESSION] Successfully retrived!");
+    console.log("[SESSION] Successfully retrieved!");
     console.log(session);
 });
 ```
 
-### Create or retrive a session
+### Create or retrieve a session
 ```javascript
-sessionHandler.createOrRetrive({
+sessionHandler.createOrRetrieve({
     ident: "my-session-name"
 
 }, function(err, session, state){
     if(err){ return console.log(err); };
 
     if(state == 1){ console.log("Successfully created!"); }
-    if(state == 2){ console.log("Successfully retrived!"); }
+    if(state == 2){ console.log("Successfully retrieved!"); }
     
     console.log(session);
 });
@@ -184,7 +184,7 @@ sessionManager.destroy("my-session-name");
 ---
 
 ## Session Handling
-A session-object is returned by the modules ```create``` and ```retrive``` methods.
+A session-object is returned by the modules ```create``` and ```retrieve``` methods.
 
 ### Connect a session
 ```javascript
@@ -250,7 +250,7 @@ session.get(function(err, result){
 
 ### Example 1
 Create a session if it does not exist,
-otherwise retrive the exisiting session:
+otherwise retrieve the exisiting session:
 
 ```javascript
 if(!sessionHandler.exists("my-session-name")){
@@ -268,9 +268,9 @@ if(!sessionHandler.exists("my-session-name")){
 
 }else{
 
-    sessionHandler.retrive("my-session-name", function(err, session){
+    sessionHandler.retrieve("my-session-name", function(err, session){
         if(err){ return console.log(err); };
-        console.log("[SESSION] Successfully retrived!");
+        console.log("[SESSION] Successfully retrieved!");
         console.log(session);
 
         //You may now connect via session.connect(...)
@@ -282,14 +282,14 @@ if(!sessionHandler.exists("my-session-name")){
 This example is the recommended approach.
 
 ```javascript
-sessionHandler.createOrRetrive({
+sessionHandler.createOrRetrieve({
     ident: "my-session-name"
 
 }, function(err, session, state){
     if(err){ return console.log(err); };
 
     if(state == 1){ console.log("Successfully created!"); }
-    if(state == 2){ console.log("Successfully retrived!"); }
+    if(state == 2){ console.log("Successfully retrieved!"); }
 
     if(!session.online()){
         session.connect(function(err){
