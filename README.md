@@ -4,7 +4,7 @@ Supports Node.js/IO.js from version 0.10 onwards.
 
 Unit-Tests are included.
 
-[![Build Status](https://travis-ci.org/Cloud2Box/c2b-session.svg?branch=master)](https://travis-ci.org/Cloud2Box/c2b-session) [![npm version](https://badge.fury.io/js/c2b-session.svg)](https://badge.fury.io/js/c2b-session)
+[![Build Status](https://travis-ci.org/Burnett01/c2b-session.svg?branch=master)](https://travis-ci.org/Burnett01/c2b-session) [![npm version](https://badge.fury.io/js/c2b-session.svg)](https://badge.fury.io/js/c2b-session)
 ---
 
 # Table of contents

@@ -1,8 +1,8 @@
 {
   "name": "c2b-session",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "bugs": {
-    "url": "https://github.com/Cloud2Box/c2b-session/issues"
+    "url": "https://github.com/Burnett01/c2b-session/issues"
   },
   "description": "A legacy yet minimalist session-manager for Node.js/IO.js. Supports Node.js/IO.js from version 0.10 onwards.",
   "keywords": [
@@ -19,9 +19,9 @@
     "legacy"
   ],
   "author": {
-    "name": "Cloud2Box - IT Dienstleistungen",
-    "email": "info@cloud2box.net",
-    "url": "https://github.com/Cloud2Box/c2b-session"
+    "name": "Steven Agyekum",
+    "email": "agyekum@posteo.de",
+    "url": "https://github.com/Burnett01/c2b-session"
   },
   "main": "./src/index.js",
   "scripts": {
@@ -29,13 +29,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Cloud2Box/c2b-session.git"
+    "url": "git+https://github.com/Burnett01/c2b-session.git"
   },
   "license": "MIT",
   "maintainers": [
     {
       "name": "Burnett01",
-      "email": "s-8@posteo.mx"
+      "email": "agyekum@posteo.de"
     }
   ],
   "dependencies": {},
