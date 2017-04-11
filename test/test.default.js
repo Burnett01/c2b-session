@@ -38,12 +38,12 @@ describe('Session Manager [BASIC-TESTS]', function() {
     });
     
 
-    it('retrives the session by ident', function(done) {
+    it('retrieves the session by ident', function(done) {
 
-        expect(sessionManager).to.have.property('retrive');
-        expect(sessionManager.retrive).to.be.a('function');
+        expect(sessionManager).to.have.property('retrieve');
+        expect(sessionManager.retrieve).to.be.a('function');
 
-        sessionManager.retrive(session_name, function(err, session){
+        sessionManager.retrieve(session_name, function(err, session){
             expect(err).to.be.null;
             if(err){ return console.log(err); };
 
@@ -86,12 +86,12 @@ describe('Session Manager [EXTENDED-TESTS]', function() {
 
     var _session;
 
-    it('creates a session #createOrRetrive', function(done) {
+    it('creates a session #createOrRetrieve', function(done) {
 
-        expect(sessionManager).to.have.property('createOrRetrive');
-        expect(sessionManager.createOrRetrive).to.be.a('function');
+        expect(sessionManager).to.have.property('createOrRetrieve');
+        expect(sessionManager.createOrRetrieve).to.be.a('function');
 
-        sessionManager.createOrRetrive({
+        sessionManager.createOrRetrieve({
             ident: session_name
 
         }, function(err, session, state){
@@ -111,12 +111,12 @@ describe('Session Manager [EXTENDED-TESTS]', function() {
         });
     });
 
-    it('retrives the session #createOrRetrive', function(done) {
+    it('retrieves the session #createOrRetrieve', function(done) {
 
-        expect(sessionManager).to.have.property('createOrRetrive');
-        expect(sessionManager.createOrRetrive).to.be.a('function');
+        expect(sessionManager).to.have.property('createOrRetrieve');
+        expect(sessionManager.createOrRetrieve).to.be.a('function');
 
-        sessionManager.createOrRetrive({
+        sessionManager.createOrRetrieve({
             ident: session_name
 
         }, function(err, session, state){

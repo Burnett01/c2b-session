@@ -48,7 +48,7 @@ var SESSION_TPL = function() {
 };
 
 
-C2B_SESSION = {
+var C2B_SESSION = {
 
     _timeout: 3,
     _timeout_cb: undefined,
@@ -110,7 +110,7 @@ C2B_SESSION = {
         return online_sessions;
     },
 
-    retrive: function(ident, _callback){
+    retrieve: function(ident, _callback){
         if(!ident || (ident && typeof ident !== 'string')){
             return _callback(ERRORS.PARAM_NON_STRING, null);
         }
@@ -208,18 +208,18 @@ C2B_SESSION = {
 
         C2B_SESSION.sessions[config.ident] = Object.assign(Object.assign({}, SESSION_TPL()), config);
 
-        C2B_SESSION.retrive(config.ident, function(err, session){
+        C2B_SESSION.retrieve(config.ident, function(err, session){
             if(err){ return callback(err, null); }
             return callback(null, session);
         });
     },
 
-    createOrRetrive: function(config, callback) {
+    createOrRetrieve: function(config, callback) {
         if(!config || (config && typeof config !== 'object')){
             return callback(ERRORS.PARAM_NON_OBJECT, null, null);
         }
 
-        return C2B_SESSION.retrive(config.ident, function(err, session){
+        return C2B_SESSION.retrieve(config.ident, function(err, session){
 
             if(!err){ return callback(null, session, 2); }
 
@@ -246,6 +246,13 @@ C2B_SESSION = {
     },
 
 };
+
+// -------------------------
+// Legacy functions
+// -------------------------
+C2B_SESSION['retrieve']         =  C2B_SESSION.retrieve;
+C2B_SESSION['createOrRetrive']  =  C2B_SESSION.createOrRetrieve;
+// -------------------------
 
 module.exports = C2B_SESSION;
 
