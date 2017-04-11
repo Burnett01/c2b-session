@@ -32,6 +32,7 @@ Unit-Tests are included.
  * [Make](#make)
  * [NPM](#npm)
 * [How to install](#how-to-install)
+* [Use-case](#use-case)
 
 ---
 
@@ -317,5 +318,10 @@ Simply run those tests as you please:
 
 ---
 
-##How to install:
+## How to install:
 Use `npm install c2b-session` 
+
+---
+
+## Use-case:
+This module is used for a Twitch-like channel application.
