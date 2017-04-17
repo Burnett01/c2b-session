@@ -249,7 +249,7 @@ var C2B_SESSION = {
 // -------------------------
 // Legacy functions
 // -------------------------
-C2B_SESSION['retrieve']         =  C2B_SESSION.retrieve;
+C2B_SESSION['retrive']          =  C2B_SESSION.retrieve;
 C2B_SESSION['createOrRetrive']  =  C2B_SESSION.createOrRetrieve;
 // -------------------------
 
