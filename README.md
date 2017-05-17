@@ -1,38 +1,43 @@
 # c2b-session
+
 A legacy yet minimalist session-manager for Node.js.
 Supports Node.js/IO.js from version 0.10 onwards.
 
 Unit-Tests are included.
 
 [![Build Status](https://travis-ci.org/Burnett01/c2b-session.svg?branch=master)](https://travis-ci.org/Burnett01/c2b-session) [![npm version](https://badge.fury.io/js/c2b-session.svg)](https://badge.fury.io/js/c2b-session)
+
 ---
 
 # Table of contents
+
 * [API](#api)
 * [Setup](#setup)
- * [Set a timeout for sessions](#set-a-timeout-for-sessions-optional) (optional)
- * [Create a session](#create-a-session)
- * [Retrieve a session](#retrieve-a-session)
- * [Create or retrieve a session](#create-or-retrieve-a-session)
- * [Test whether session exist](#test-whether-session-exist)
- * [Test whether session is connected](#test-whether-session-is-connected)
- * [Get all sessions](#get-all-sessions)
- * [Get online sessions](#get-online-sessions)
- * [Destroy a session](#destroy-a-session)
+* [Set a timeout for sessions](#set-a-timeout-for-sessions-optional) (optional)
+* [Create a session](#create-a-session)
+* [Retrieve a session](#retrieve-a-session)
+* [Create or retrieve a session](#create-or-retrieve-a-session)
+* [Test whether session exist](#test-whether-session-exist)
+* [Test whether session is connected](#test-whether-session-is-connected)
+* [Get all sessions](#get-all-sessions)
+* [Get online sessions](#get-online-sessions)
+* [Destroy a session](#destroy-a-session)
 * [Session Handling](#session-handling)
- * [Connect a session](#connect-a-session)
- * [Disconnect a session](#disconnect-a-session)
- * [Test status](#test-status)
- * [Store session-data](#store-session-data)
- * [Query session-data](#query-session-data)
+    * [Connect a session](#connect-a-session)
+    * [Disconnect a session](#disconnect-a-session)
+    * [Test status](#test-status)
+    * [Store session-data](#store-session-data)
+    * [Query session-data](#query-session-data)
 * Examples
- * [Example 1](#example-1)
- * [Example 2](#example-2-recommended) (recommended)
-* [Unit-Tests](#unit-tests)
- * [Make](#make)
- * [NPM](#npm)
+    * [Example 1](#example-1)
+    * [Example 2](#example-2-recommended) (recommended)
 * [How to install](#how-to-install)
+* [Unit-Tests](#unit-tests)
+    * [Make](#make)
+    * [NPM](#npm)
 * [Use-case](#use-case)
+* [Contributing](#contributing)
+* [License](#license)
 
 ---
 
@@ -63,6 +68,7 @@ Methods (fn) of a session-object:
 ```
 
 Default template of session-object:
+
 ```javascript
 {
     t_connect: Date.now(),      //timestamp of a sessions initial connection
@@ -76,6 +82,7 @@ Default template of session-object:
 ---
 
 ## Setup
+
 ```javascript
 var sessionManager = require('c2b-session');
 ```
@@ -93,6 +100,7 @@ sessionManager.setTimeout(1, function(ident, time){
 ```
 
 ### Create a session
+
 ```javascript
 sessionManager.create({
     ident: "my-session-name"
@@ -123,6 +131,7 @@ sessionManager.create({
 ```
 
 ### Retrieve a session
+
 ```javascript
 sessionManager.retrieve("my-session-name", function(err, session){
     if(err){ return console.log(err); };
@@ -133,6 +142,7 @@ sessionManager.retrieve("my-session-name", function(err, session){
 ```
 
 ### Create or retrieve a session
+
 ```javascript
 sessionHandler.createOrRetrieve({
     ident: "my-session-name"
@@ -148,6 +158,7 @@ sessionHandler.createOrRetrieve({
 ```
 
 ### Test whether session exist
+
 ```javascript
 if(sessionManager.exists("my-session-name")){
     console.log("[SESSION] Exist!");
@@ -157,6 +168,7 @@ if(sessionManager.exists("my-session-name")){
 ```
 
 ### Test whether session is connected
+
 ```javascript
 if(sessionManager.is_connected("my-session-name")){
     console.log("[SESSION] Online!");
@@ -166,6 +178,7 @@ if(sessionManager.is_connected("my-session-name")){
 ```
 
 ### Get all sessions
+
 ```javascript
 sessionManager.getAll();
 
@@ -179,15 +192,18 @@ sessionManager.getOnline();
 ```
 
 ### Destroy a session
+
 ```javascript
 sessionManager.destroy("my-session-name");
 ```
 ---
 
 ## Session Handling
+
 A session-object is returned by the modules ```create``` and ```retrieve``` methods.
 
 ### Connect a session
+
 ```javascript
 session.connect(function(err){
     if(err){ return console.log(err); };
@@ -197,6 +213,7 @@ session.connect(function(err){
 ```
 
 ### Disconnect a session
+
 ```javascript
 session.disconnect(function(err){
     if(err){ return console.log(err); };
@@ -206,6 +223,7 @@ session.disconnect(function(err){
 ```
 
 ### Test status
+
 ```javascript
 if(session.online()){
     console.log("[SESSION] Online!");
@@ -215,6 +233,7 @@ if(session.online()){
 ```
 
 ### Store session-data
+
 ```javascript
 session.put({ 
     D: "Data 4",
@@ -229,6 +248,7 @@ session.put({
 ```
 
 ### Query session-data
+
 ```javascript
 //Query by key
 session.get("E", function(err, result){
@@ -250,6 +270,7 @@ session.get(function(err, result){
 ---
 
 ### Example 1
+
 Create a session if it does not exist,
 otherwise retrieve the exisiting session:
 
@@ -280,6 +301,7 @@ if(!sessionHandler.exists("my-session-name")){
 ```
 
 ### Example 2 (recommended)
+
 This example is the recommended approach.
 
 ```javascript
@@ -301,9 +323,17 @@ sessionHandler.createOrRetrieve({
 
 });
 ```
+
+---
+
+## How to install:
+
+Use `npm install c2b-session`
+
 ---
 
 ## Unit-Tests
+
 The testing-framework used by this module is [Mocha](https://github.com/mochajs/mocha) with the BDD / TDD assertion library [Chai](https://github.com/chaijs/chai).
 
 * test/test.default.js `Performs 13 tests` | [Source](../master/test/test.default.js)
@@ -311,17 +341,27 @@ The testing-framework used by this module is [Mocha](https://github.com/mochajs/
 Simply run those tests as you please:
 
 ### Make
+
 ```make test```
 
 ### NPM
+
 ```npm test```
 
 ---
 
-## How to install:
-Use `npm install c2b-session` 
+## Use-case:
+
+This module is used for a Twitch-like channel application.
 
 ---
 
-## Use-case:
-This module is used for a Twitch-like channel application.
+## Contributing
+
+You're very welcome and free to contribute. Thank you.
+
+---
+
+## License
+
+[MIT](../master/LICENSE.MD)
