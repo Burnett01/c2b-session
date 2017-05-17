@@ -33,8 +33,7 @@ var ERRORS = {
 
   , PARAM_NON_OBJECT:           new Error('The first parameter must be an object!')
   , PARAM_NON_STRING:           new Error('The first parameter must be a string!')
-}
-
+};
 
 var SESSION_TPL = function() {
     return {
@@ -52,6 +51,12 @@ var C2B_SESSION = {
     _timeout: 3,
     _timeout_cb: undefined,
 
+    /**
+     * @module C2B_SESSION
+     * @function: setTimeout
+     * @param {Number} timeout | Timeout
+     * @param {Function} callback | Callback
+     */
     setTimeout: function(timeout, callback){
         if(!timeout){ return; }
         
@@ -64,6 +69,11 @@ var C2B_SESSION = {
 
     sessions: {},
 
+    /**
+     * @module C2B_SESSION
+     * @function: exists
+     * @param {String} ident | Ident
+     */
     exists: function(ident){
         if(!ident || (ident && typeof ident !== 'string')){
             return callback(ERRORS.PARAM_NON_STRING);
@@ -71,6 +81,11 @@ var C2B_SESSION = {
         return (C2B_SESSION.sessions.hasOwnProperty(ident)) ? true: false;
     },
 
+    /**
+     * @module C2B_SESSION
+     * @function: is_connected
+     * @param {String} ident | Ident
+     */
     is_connected: function(ident){
         if(!ident || (ident && typeof ident !== 'string')){
             return callback(ERRORS.PARAM_NON_STRING);
@@ -84,10 +99,18 @@ var C2B_SESSION = {
         return (C2B_SESSION.sessions[ident].connected === true) ? true : false;
     },
 
+    /**
+     * @module C2B_SESSION
+     * @function: getAll
+     */
     getAll: function(){
         return C2B_SESSION.sessions;
     },
 
+    /**
+     * @module C2B_SESSION
+     * @function: getOnline
+     */
     getOnline: function(){
         var sessions = C2B_SESSION.getAll();
         var online_sessions = [];
@@ -109,6 +132,12 @@ var C2B_SESSION = {
         return online_sessions;
     },
 
+    /**
+     * @module C2B_SESSION
+     * @function: retrieve
+     * @param {String} ident | Ident
+     * @param {Function} _callback | Callback
+     */
     retrieve: function(ident, _callback){
         if(!ident || (ident && typeof ident !== 'string')){
             return _callback(ERRORS.PARAM_NON_STRING, null);
@@ -123,7 +152,11 @@ var C2B_SESSION = {
         }
 
         return _callback(null, Object.assign({
-
+            /**
+             * @module C2B_SESSION.retrieve
+             * @function: connect
+             * @param {Function} callback | Callback
+             */
             connect: function(callback){
                 if(!C2B_SESSION.exists(ident)){ 
                     return callback(ERRORS.SESSION_INVALID); 
@@ -137,6 +170,11 @@ var C2B_SESSION = {
                 return callback(null);
             },
 
+            /**
+             * @module C2B_SESSION.retrieve
+             * @function: disconnect
+             * @param {Function} callback | Callback
+             */
             disconnect: function(callback){
                 if(!C2B_SESSION.exists(ident)){ 
                     return callback(ERRORS.SESSION_INVALID); 
@@ -150,6 +188,12 @@ var C2B_SESSION = {
                 return callback(null);
             },
 
+            /**
+             * @module C2B_SESSION.retrieve
+             * @function: put
+             * @param {Object} date | Data
+             * @param {Function} callback | Callback
+             */
             put: function(data, callback){
                 if(!data || (data && typeof data !== 'object')){
                     return callback(ERRORS.PARAM_NON_OBJECT);
@@ -167,6 +211,12 @@ var C2B_SESSION = {
                 return callback(null);
             },
 
+            /**
+             * @module C2B_SESSION.retrieve
+             * @function: get
+             * @param {Object} date | Data
+             * @param {Function} callback | Callback
+             */
             get: function(data, callback){
                 if(typeof data === 'function'){
                     callback = data;
@@ -187,6 +237,10 @@ var C2B_SESSION = {
                 return callback(null, C2B_SESSION.sessions[ident].data);
             },
 
+            /**
+             * @module C2B_SESSION.retrieve
+             * @function: online
+             */
             online: function(){
                 if(!C2B_SESSION.exists(ident)){ 
                     return callback(ERRORS.SESSION_INVALID); 
@@ -197,6 +251,12 @@ var C2B_SESSION = {
         }, C2B_SESSION.sessions[ident]));
     },
 
+    /**
+     * @module C2B_SESSION
+     * @function: create
+     * @param {Object} config | Configuration
+     * @param {Function} callback | Callback
+     */
     create: function(config, callback) {
         if(!config || (config && typeof config !== 'object')){
              return callback(ERRORS.PARAM_NON_OBJECT);
@@ -213,6 +273,12 @@ var C2B_SESSION = {
         });
     },
 
+    /**
+     * @module C2B_SESSION
+     * @function: createOrRetrieve
+     * @param {Object} config | Configuration
+     * @param {Function} callback | Callback
+     */
     createOrRetrieve: function(config, callback) {
         if(!config || (config && typeof config !== 'object')){
             return callback(ERRORS.PARAM_NON_OBJECT, null, null);
@@ -234,6 +300,11 @@ var C2B_SESSION = {
         });
     },
 
+    /**
+     * @module C2B_SESSION
+     * @function: destroy
+     * @param {String} ident | Ident
+     */
     destroy: function(ident){
         if(!C2B_SESSION.exists(ident)){
             return;
@@ -256,11 +327,16 @@ C2B_SESSION['createOrRetrive']  =  C2B_SESSION.createOrRetrieve;
 module.exports = C2B_SESSION;
 
 
-
+// -------------------------
+// Utility functions
+// -------------------------
 function _has_timeout(time, minutes){
     return ((Math.round(((new Date() - time) / 1000) / 60) % 60) >= minutes) ? true : false;
 }
 
+// -------------------------
+// Polyfill - Object.assign
+// -------------------------
 if (typeof Object.assign != 'function') {
   Object.assign = function(target) {
     'use strict';
