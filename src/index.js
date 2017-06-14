@@ -45,14 +45,15 @@ var SESSION_TPL = function() {
     };
 };
 
-
+/**
+ * @module C2B_SESSION
+ */
 var C2B_SESSION = {
 
     _timeout: 3,
     _timeout_cb: undefined,
 
     /**
-     * @module C2B_SESSION
      * @function: setTimeout
      * @param {Number} timeout | Timeout
      * @param {Function} callback | Callback
@@ -70,7 +71,6 @@ var C2B_SESSION = {
     sessions: {},
 
     /**
-     * @module C2B_SESSION
      * @function: exists
      * @param {String} ident | Ident
      */
@@ -82,7 +82,6 @@ var C2B_SESSION = {
     },
 
     /**
-     * @module C2B_SESSION
      * @function: is_connected
      * @param {String} ident | Ident
      */
@@ -100,7 +99,6 @@ var C2B_SESSION = {
     },
 
     /**
-     * @module C2B_SESSION
      * @function: getAll
      */
     getAll: function(){
@@ -108,7 +106,6 @@ var C2B_SESSION = {
     },
 
     /**
-     * @module C2B_SESSION
      * @function: getOnline
      */
     getOnline: function(){
@@ -133,7 +130,6 @@ var C2B_SESSION = {
     },
 
     /**
-     * @module C2B_SESSION
      * @function: retrieve
      * @param {String} ident | Ident
      * @param {Function} _callback | Callback
@@ -151,9 +147,11 @@ var C2B_SESSION = {
             return _callback(ERRORS.SESSION_EXPIRED, null);
         }
 
+        /**
+         * @module C2B_SESSION.retrieve
+         */
         return _callback(null, Object.assign({
             /**
-             * @module C2B_SESSION.retrieve
              * @function: connect
              * @param {Function} callback | Callback
              */
@@ -171,7 +169,6 @@ var C2B_SESSION = {
             },
 
             /**
-             * @module C2B_SESSION.retrieve
              * @function: disconnect
              * @param {Function} callback | Callback
              */
@@ -189,7 +186,6 @@ var C2B_SESSION = {
             },
 
             /**
-             * @module C2B_SESSION.retrieve
              * @function: put
              * @param {Object} date | Data
              * @param {Function} callback | Callback
@@ -212,7 +208,6 @@ var C2B_SESSION = {
             },
 
             /**
-             * @module C2B_SESSION.retrieve
              * @function: get
              * @param {Object} date | Data
              * @param {Function} callback | Callback
@@ -238,7 +233,6 @@ var C2B_SESSION = {
             },
 
             /**
-             * @module C2B_SESSION.retrieve
              * @function: online
              */
             online: function(){
@@ -252,7 +246,6 @@ var C2B_SESSION = {
     },
 
     /**
-     * @module C2B_SESSION
      * @function: create
      * @param {Object} config | Configuration
      * @param {Function} callback | Callback
@@ -274,7 +267,6 @@ var C2B_SESSION = {
     },
 
     /**
-     * @module C2B_SESSION
      * @function: createOrRetrieve
      * @param {Object} config | Configuration
      * @param {Function} callback | Callback
@@ -301,7 +293,6 @@ var C2B_SESSION = {
     },
 
     /**
-     * @module C2B_SESSION
      * @function: destroy
      * @param {String} ident | Ident
      */
