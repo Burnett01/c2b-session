@@ -1,5 +1,5 @@
 {
-  "name": "c2b-session",
+  "name": "@burnett01/c2b-session",
   "version": "1.0.5",
   "bugs": {
     "url": "https://github.com/Burnett01/c2b-session/issues"
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Burnett01/c2b-session.git"
+    "url": "ssh://git@github.com/Burnett01/c2b-session.git"
   },
   "license": "MIT",
   "maintainers": [
