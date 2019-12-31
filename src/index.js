@@ -4,7 +4,7 @@
 * Product:      C2B Session Manager
 * Description:  A minimalist session-manager for NodeJS
 *
-* Copyright (c) 2016-2019 Steven Agyekum <agyekum@posteo.de>
+* Copyright (c) 2016-2020 Steven Agyekum <agyekum@posteo.de>
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 * and associated documentation files (the "Software"), to deal in the Software without restriction,
