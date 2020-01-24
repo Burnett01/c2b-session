@@ -5,7 +5,7 @@ Supports Node.js/IO.js from version 0.10 onwards.
 
 Unit-Tests are included.
 
-[![Build Status](https://travis-ci.org/Burnett01/c2b-session.svg?branch=master)](https://travis-ci.org/Burnett01/c2b-session) [![npm version](https://badge.fury.io/js/c2b-session.svg)](https://badge.fury.io/js/c2b-session)
+[![Build Status](https://travis-ci.org/Burnett01/c2b-session.svg?branch=master)](https://travis-ci.org/Burnett01/c2b-session) [![npm version](https://badge.fury.io/js/%40burnett01%2Fc2b-session.svg)](https://badge.fury.io/js/%40burnett01%2Fc2b-session)
 
 ---
 
@@ -84,7 +84,7 @@ Default template of session-object:
 ## Setup
 
 ```javascript
-var sessionManager = require('c2b-session');
+var sessionManager = require('@burnett01/c2b-session');
 ```
 
 ### Set a timeout for sessions (optional)
@@ -328,7 +328,7 @@ sessionHandler.createOrRetrieve({
 
 ## How to install:
 
-Use `npm install c2b-session`
+Use `npm install @burnett01/c2b-session`
 
 ---
 
