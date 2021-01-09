@@ -5,7 +5,7 @@ Supports Node.js/IO.js from version 0.10 onwards.
 
 Unit-Tests are included.
 
-[![Build Status](https://travis-ci.org/Burnett01/c2b-session.svg?branch=master)](https://travis-ci.org/Burnett01/c2b-session) [![npm version](https://badge.fury.io/js/%40burnett01%2Fc2b-session.svg)](https://badge.fury.io/js/%40burnett01%2Fc2b-session)
+[![Build Status](https://travis-ci.com/Burnett01/c2b-session.svg?branch=master)](https://travis-ci.com/Burnett01/c2b-session) [![npm version](https://badge.fury.io/js/%40burnett01%2Fc2b-session.svg)](https://badge.fury.io/js/%40burnett01%2Fc2b-session)
 
 ---
 
